@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects • Prathamesh Karanjolkar</title>
+
+  <style>
+    :root {
+      --bg1: #051029;
+      --bg2: #071823;
+      --accent: #42d392;
+      --muted: #9aa4b2;
+      --glass: rgba(255, 255, 255, 0.06);
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Inter", sans-serif;
+      background: linear-gradient(135deg, var(--bg1), var(--bg2));
+      color: white;
+      overflow-x: hidden;
+    }
+
+    h1, h2 {
+      margin: 0 0 12px;
+      font-weight: 700;
+    }
+
+    p.meta {
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    .center { text-align: center; }
+    .section-pad { padding: 120px 20px; }
+
+    /* ---------- GLASS ELEMENTS ---------- */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 28px;
+      border-radius: 16px;
+      backdrop-filter: blur(14px);
+      transition: 0.25s ease;
+    }
+    .glass-card:hover {
+      box-shadow: 0 6px 20px rgba(66, 211, 146, 0.23);
+      transform: translateY(-4px);
+    }
+
+    
+    /* ---------- HERO ---------- */
+    .hero {
+      padding-top: 160px; /* space for sticky nav */
+      padding-bottom: 40px;
+      text-align: center;
+    }
+    .hero h1 { font-size: 48px; margin-bottom: 20px; }
+    .max-720 { max-width: 720px; margin: 0 auto; }
+
+    /* ---------- PROJECTS GRID ---------- */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      padding: 60px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .proj {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--glass);
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(14px);
+      transition: 0.3s ease;
+    }
+    .proj:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(66,211,146,0.2); }
+
+    .proj .cover {
+      width: 100%;
+      padding-top: 56%; /* 16:9 ratio */
+      background-image: var(--img);
+      background-size: cover;
+      background-position: center;
+    }
+
+    .proj .body {
+      padding: 16px 20px;
+    }
+
+    .proj .tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .chip {
+      background: rgba(66, 211, 146, 0.15);
+      color: #42d392;
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    /* Placeholder project */
+    .proj.placeholder { display: flex; align-items: center; justify-content: center; padding: 40px 20px; text-align:center; }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      margin-top: 80px;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    footer .glass-footer {
+      width: min(1100px, 90%);
+      border-radius: 16px;
+      padding: 28px 40px;
+      display: flex;
+      justify-content: space-between;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(20px);
+    }
+    footer a { color: var(--muted); text-decoration: none; font-weight: 600; transition: 0.25s ease; }
+    footer a:hover { color: #fff; }
+
+    /* ---------- MOBILE ---------- */
+    @media (max-width: 768px) {
+      nav { flex-wrap: wrap; gap: 12px; padding: 10px 16px; width: 90%; }
+      nav .nav-inner { flex-wrap: wrap; justify-content: center; gap: 12px; width: 100%; }
+      nav a { flex: 1 1 45%; text-align: center; font-size: 14px; padding: 8px 0; }
+      .projects-grid { grid-template-columns: 1fr; padding: 40px 12px; gap: 18px; }
+    }
+
+    .home-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 9999;
+    padding: 10px 20px;
+    font-weight: 600;
+    font-size: 15px;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(18px) saturate(180%);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 999px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+    text-decoration: none;
+    transition: 0.25s ease, transform 0.3s ease;
+  }
+
+  .home-btn:hover {
+    background: rgba(255,255,255,0.12);
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 15px 50px rgba(66,211,146,0.25);
+  }
+
+  /* Mobile adjustment */
+  @media (max-width: 600px) {
+    .home-btn {
+      padding: 8px 16px;
+      font-size: 14px;
+    }
+  }
+  </style>
+</head>
+<body>
+<a href="index.html" class="home-btn">Home</a>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>My Projects</h1>
+    <p class="meta max-720">
+      A collection of my favourite work — crafted with clean UI, subtle motion,
+      and glassmorphic visuals.
+    </p>
+  </section>
+
+  <!-- PROJECTS GRID -->
+<section class="projects-grid">
+  <!-- Project 1 -->
+  <article class="proj" style="--img: url('image1.png');">
+    <div class="cover" style="background-image: var(--img)"></div>
+    <div class="body">
+      <strong>Outcry</strong>
+      <div class="meta">A robust, almost fully featured social media platform built to combat crimes against women through reporting, community support, and awareness.</div>
+      <div class="tags">
+        <span class="chip">PHP</span>
+          <span class="chip">Python</span>
+          <span class="chip">MariaDB</span>
+          <span class="chip">LeafletJS</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- Project 2 -->
+  <article class="proj" style="--img: url('atelier-do-doce.png');">
+    <div class="cover" style="background-image: var(--img)"></div>
+    <div class="body">
+      <strong>Atelier do Doce</strong>
+      <div class="meta">E-commerce site (WordPress + WooCommerce)</div>
+      <div class="tags">
+        <span class="chip">WordPress</span>
+        <span class="chip">WooCommerce</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- Placeholder for future projects -->
+  <article class="proj placeholder glass-card">
+    <div class="body">
+      <strong>More Projects Coming Soon</strong>
+      <p class="meta">I regularly update this section with new work.</p>
+    </div>
+  </article>
+</section>
+
+
+  <!-- FOOTER -->
+<footer id="footer"
+        class="appear"
+        style="
+          padding: 80px 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        "
+      >
+        <div
+          style="
+            width: min(1100px, 90%);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 14px;
+            padding: 40px 50px;
+            display: flex;
+            justify-content: space-between;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+          "
+        >
+          <!-- LEFT SIDE -->
+          <div>
+            <div style="font-size: 42px; font-weight: 800; line-height: 1.1">
+              Prathamesh<br />Karanjolkar.
+            </div>
+            <div
+              style="
+                margin-top: 14px;
+                color: rgba(255, 255, 255, 0.25);
+                font-size: 14px;
+              "
+            >
+            <p class="meta max-720" style="font-size: large;">
+
+                A developer who loves building clean, modern,
+                websites with personality and purpose. I focus on creating fast, accessible,
+                and elegant experiences.</p>
+              © 2025
+            </div>
+          </div>
+
+            <!-- Connect -->
+            <div style="display: flex; flex-direction: column; gap: 10px">
+              <div style="font-weight: 600">Let's Connect</div>
+              <a href="index.html#contact" style="opacity: 0.7">Email</a>
+              <a href="https://www.linkedin.com/in/prathamesh-karanjolkar-6a177b258?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" style="opacity: 0.7">LinkedIn</a>
+              <a href="https://github.com/karanjolkar-prathamesh" style="opacity: 0.7">GitHub</a>
+              <a href="https://www.instagram.com/prathamesh_k_0_0/" style="opacity: 0.7">Instagram</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+</body>
+</html>
