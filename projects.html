@@ -82,14 +82,28 @@
     }
     .proj:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(66,211,146,0.2); }
 
+    /*
     .proj .cover {
       width: 100%;
-      padding-top: 56%; /* 16:9 ratio */
+      padding-top: 56%; 
       background-image: var(--img);
       background-size: cover;
       background-position: center;
     }
+*/
+ .proj .cover {
+  width: 100%;
+  height: 200px; /* your old implied height */
+  overflow: hidden;
+  border-radius: 12px;
+}
 
+.proj .cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* keeps the same look as background-size: cover */
+  display: block;
+}
     .proj .body {
       padding: 16px 20px;
     }
@@ -174,6 +188,8 @@
       font-size: 14px;
     }
   }
+
+
   </style>
 </head>
 <body>
@@ -290,4 +306,5 @@
       </footer>
 </body>
 </html>
+
 
