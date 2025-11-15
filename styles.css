@@ -385,12 +385,37 @@ h2 { font-family: Rubik; font-weight:700; margin:0 0 18px 0; z-index:2; }
   z-index: 2;
 }
 
-/* Tech stack */
+/* Tech stack 
 .tech-grid { display:flex; flex-wrap:wrap; gap:10px; }
 .chip {
   padding:10px 12px; border-radius:999px;
   background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.035);
   font-weight:600; color:var(--muted); font-size:13px; z-index:2;
+}
+*/
+/* Elevated - depth and glow */
+.tech-grid { display:flex; flex-wrap:wrap; gap:12px; }
+
+.chip {
+  padding:10px 14px;
+  border-radius:999px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 2px 8px rgba(3,8,20,0.35);
+  font-weight:700;
+  color: #e9f2ff;        /* pale, readable blue-white */
+  font-size:13px;
+  z-index:2;
+  backdrop-filter: blur(6px); /* optional soft glass effect */
+  -webkit-backdrop-filter: blur(6px);
+  transition: transform .15s cubic-bezier(.2,.9,.3,1), box-shadow .15s;
+}
+.chip:hover,
+.chip:focus {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 26px rgba(3,12,40,0.6);
+  border-color: rgba(11,99,255,0.18);
+  cursor: pointer;
 }
 
 /* Projects */
@@ -881,3 +906,4 @@ footer .muted {
   margin-left: 6px;
   vertical-align: middle;
 }
+
